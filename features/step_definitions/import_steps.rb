@@ -4,7 +4,7 @@ end
 
 When /^I import the file$/ do
   visit root_path
-  attach_file("import_file", $file.to_s)
+  attach_file("import_import_file", $file.to_s)
   click_on "Import"
 end
 
@@ -13,7 +13,9 @@ Then /^I should see a confirmation message$/ do
 end
 
 Then /^the data from the file should be in our database$/ do
-  pending # express the regexp above with the code you wish you had
+  Import.count.should == 1
+  pending 
+  # Purchaser.size.should > 0
 end
 
 Given /^I have an invalid data file$/ do

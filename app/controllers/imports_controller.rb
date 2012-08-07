@@ -4,7 +4,8 @@ class ImportsController < ApplicationController
   end
 
   def create
-    @import = Import.new(params[:import])
+    @import = Import.new
+    @import.load_file params
     if @import.save
       redirect_to imports_path, notice: 'The data file was successfully imported'
     else

@@ -14,18 +14,19 @@ end
 
 Then /^the data from the file should be in our database$/ do
   Import.count.should == 1
+
   pending 
-  # Purchaser.size.should > 0
 end
 
-Given /^I have an invalid data file$/ do
-  pending # express the regexp above with the code you wish you had
+When /^I import an invalid file$/ do
+  visit root_path
+  click_on "Import"
 end
 
 Then /^I should see an error message$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content("need to be fixed before continuing")
 end
 
 Then /^no new data should be in our database$/ do
-  pending # express the regexp above with the code you wish you had
+  Import.count.should == 0
 end

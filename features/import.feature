@@ -10,7 +10,6 @@ Feature: Import purchase file
     And the data from the file should be in our database
 
   Scenario: Import an invalid data file
-    Given I have an invalid data file
-    When I import the file
+    When I import an invalid file
     Then I should see an error message
     And no new data should be in our database

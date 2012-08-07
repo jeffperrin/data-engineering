@@ -1,0 +1,31 @@
+!!!
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title= "Living Social data import"
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container
+      .row
+        .span12.content
+          - flash.each do |name, msg|
+            .alert.alert-success{:class => "flash-#{name}"}
+              = msg
+          - flash.discard
+          = yield
+
+/ <!DOCTYPE html>
+/ <html>
+/ <head>
+/   <title>DataEngineering</title>
+/   <%= stylesheet_link_tag    "application", :media => "all" %>
+/   <%= javascript_include_tag "application" %>
+/   <%= csrf_meta_tags %>
+/ </head>
+/ <body>
+
+/ <%= yield %>
+
+/ </body>
+/ </html>

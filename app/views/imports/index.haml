@@ -1,0 +1,5 @@
+%h1 Import a data file
+
+= form_tag imports_path, method: :post, multipart: :true do |f|
+  = file_field_tag :import_file
+  = button_tag "Import"

@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.7'
 
 gem 'jquery-rails'
-gem 'sqlite3'
 gem 'haml-rails'
 gem 'awesome_print'
 gem 'bootstrap-sass'
@@ -17,6 +16,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'sqlite3' #use sqlite for dev & test, postgres for heroku
   gem 'rspec-rails' #this goes here so generators know we use rspec by default
 end
 

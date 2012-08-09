@@ -17,7 +17,6 @@ describe Import do
     end
   end
 
-
   describe "#parse_file" do
     context "header line exists without any data" do
       before(:each) do
@@ -102,6 +101,15 @@ describe Import do
         Item.count.should == 1
         Merchant.count.should == 1
       end
+    end
+  end
+
+  describe "#gross_revenue" do
+    it "calculates the gross revenue by summing up the total cost of each purchase" do
+      import = create(:import)
+      create(:purchase, count: 2, item: create(:item, price: 20.0), import: import)
+      create(:purchase, count: 1, item: create(:item, price: 10.0), import: import)
+      import.gross_revenue.should == 50
     end
   end
 end

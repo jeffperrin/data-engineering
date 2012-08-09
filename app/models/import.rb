@@ -38,4 +38,8 @@ class Import < ActiveRecord::Base
       errors.add(:content, "of '#{file_name}' does not appear to be in the correct tab-delimitted format")
     end
   end
+
+  def gross_revenue
+    purchases.to_a.sum(&:total_cost)
+  end
 end

@@ -9,7 +9,7 @@ When /^I import the file$/ do
 end
 
 Then /^I should see a confirmation message$/ do
-  page.should have_content("The data file was successfully imported")
+  page.should have_content("Items totalling 95.0 of gross revenue was successfully imported")
 end
 
 Then /^the data from the file should be in our database$/ do

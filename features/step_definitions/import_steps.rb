@@ -14,8 +14,10 @@ end
 
 Then /^the data from the file should be in our database$/ do
   Import.count.should == 1
-
-  pending 
+  Item.count.should > 0
+  Purchaser.count.should > 0
+  Merchant.count.should > 0
+  Purchase.count.should > 0
 end
 
 When /^I import an invalid file$/ do

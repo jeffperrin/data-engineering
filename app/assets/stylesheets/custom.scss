@@ -1,0 +1,25 @@
+@import "bootstrap";
+
+body{
+  background-color: #eee;
+}
+
+.content{
+  margin-top: 75px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 15px;
+}
+
+button{
+  @extend .btn;
+}
+
+td.num{
+  text-align: right;
+}
+
+caption{
+  font-size: 1.2em;
+  text-align: left;
+}

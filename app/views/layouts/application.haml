@@ -6,11 +6,14 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to "Living Social Data Import", root_path, class: 'brand'
     .container
-      .row
-        .span12.content
-          - flash.each do |name, msg|
-            .alert.alert-success{:class => "flash-#{name}"}
-              = msg
-          - flash.discard
-          = yield
+      .content
+        - flash.each do |name, msg|
+          .alert.alert-success{:class => "flash-#{name}"}
+            = msg
+        - flash.discard
+        = yield

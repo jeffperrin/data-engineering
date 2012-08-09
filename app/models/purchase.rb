@@ -6,6 +6,8 @@ class Purchase < ActiveRecord::Base
   belongs_to :import
 
   def total_cost
+    return 0 if item.nil?
+    return 0 if item.price.nil?
     item.price * count
   end
 end

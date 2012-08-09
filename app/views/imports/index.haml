@@ -1,6 +1,24 @@
-%h1 Import a data file
+%fieldset
+  %legend Import a data file
+  %br
+  = form_for @import, multipart: :true do |f|
+    = render 'layouts/errors', :target => @import
+    %p.well{:style => 'width: 350px; margin: auto;'}
+      = f.file_field :import_file
+      = button_tag "Import", class: 'btn-primary'
 
-= form_for @import, multipart: :true do |f|
-  = render 'layouts/errors', :target => @import
-  = f.file_field :import_file
-  = button_tag "Import"
+- unless @recent_imports.blank?
+  %table.table-striped.table
+    %caption Recent imports:
+    %thead
+      %th File
+      %th Date
+      %th Purchases
+      %th Gross revenue
+    %tbody
+      - @recent_imports.each do |import|
+        %tr
+          %td= import.file_name
+          %td= I18n.l import.created_at, format: :import_time
+          %td.num= import.purchases.size
+          %td.num= number_to_currency import.gross_revenue

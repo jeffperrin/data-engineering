@@ -9,6 +9,10 @@ class Import < ActiveRecord::Base
   validates :content, presence: :true
   validate :check_file_in_valid_format
 
+  def self.recent
+    includes(:purchases => :item).order('created_at desc').limit(10)
+  end
+
   def parse_file
     load_file
     return false unless save

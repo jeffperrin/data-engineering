@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'sqlite3'
 gem 'haml-rails'
 gem 'awesome_print'
+gem 'bootstrap-sass'
 
 group :test do
   gem 'factory_girl_rails'

@@ -8,6 +8,8 @@ gem 'haml-rails'
 gem 'awesome_print'
 gem 'bootstrap-sass'
 
+gem 'pg' # for heroku
+
 group :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails', :require => false

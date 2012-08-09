@@ -26,7 +26,7 @@ When /^I import an invalid file$/ do
 end
 
 Then /^I should see an error message$/ do
-  page.should have_content("need to be fixed before continuing")
+  page.should have_content("must be fixed before continuing")
 end
 
 Then /^no new data should be in our database$/ do

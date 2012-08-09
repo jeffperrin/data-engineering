@@ -15,9 +15,9 @@ class Import < ActiveRecord::Base
 
     Import.transaction do
       CSV.parse(content, col_sep: "\t", headers: :first_row).each do |line|
-        purchaser = Purchaser.create!(name: line['purchaser name'])
-        merchant  = Merchant.create!(address: line['merchant address'], name: line['merchant name'])
-        item      = Item.create!(description: line['item description'], price: line ['item price'], merchant_id: merchant.id)
+        purchaser = Purchaser.find_or_create_by_name!(name: line['purchaser name'])
+        merchant  = Merchant.find_or_create_by_name!(address: line['merchant address'], name: line['merchant name'])
+        item      = Item.find_or_create_by_description_and_merchant_id!(description: line['item description'], price: line ['item price'], merchant_id: merchant.id)
         Purchase.create!(count: line['purchase count'], purchaser_id: purchaser.id, item_id: item.id, import_id: id)
       end
     end

@@ -75,5 +75,33 @@ describe Import do
         merchants.first.name.should == "Bob's Pizza"
       end
     end
+    context "existing data" do
+      before(:each) do
+        @import = Import.new(file_name: 'test.tab', content: IO.read(Rails.root.join('spec', 'fixtures', 'valid_one_line.tab')))
+      end
+
+      it "assumes merchants are the same if they have the same name" do
+        Merchant.create!(name: "Bob's Pizza")
+        @import.parse_file
+
+        Merchant.count.should == 1
+      end
+
+      it "assumes purchasers are the same if they have the same name" do
+        Purchaser.create!(name: "Snake Plissken")
+        @import.parse_file
+
+        Purchaser.count.should == 1
+      end
+
+      it "assumes items are the same if they have the same name and merchant" do
+        merchant = Merchant.create!(name: "Bob's Pizza")
+        Item.create!(description: "$10 off $20 of food", merchant_id: merchant.id)
+        @import.parse_file
+
+        Item.count.should == 1
+        Merchant.count.should == 1
+      end
+    end
   end
 end

@@ -1,3 +1,13 @@
+# Challenge accepted by Jeff Perrin
+This submission has been implemented as a Rails 3.2 application. Get it up and running with the following instructions:
+
+1. Clone the fork to your local development machine
+2. Open a terminal and `cd` into the project directory
+3. Run `bundle install`
+4. Run `rake db:schema:load` and `rake db:schema:load RAILS_ENV=test`
+5. Run the tests, which should all pass: `rake spec cucumber`
+6. If this all works, start the application with `rails s` and browse to the application at [localhost:3000](http://localhost:3000)
+
 # Challenge for Software Engineer - Big Data 
 To better assess a candidates development skills, we would like to provide the following challenge.  You have as much time as you'd like (though we ask that you not spend more than a few hours).
 
